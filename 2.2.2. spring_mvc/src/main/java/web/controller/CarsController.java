@@ -22,7 +22,7 @@ public class CarsController {
 
     @GetMapping
     public String getCountCars(Model model, @RequestParam(value = "count", required = false) Integer count) {
-        System.out.println(count);
+        //System.out.println(count);
         model.addAttribute("cars", count != null && carList.size() >= count ?
                 carList.stream().limit(count).collect(Collectors.toList()) : carList);
         return "/cars";

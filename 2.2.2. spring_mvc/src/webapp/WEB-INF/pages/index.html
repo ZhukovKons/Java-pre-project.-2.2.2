@@ -10,6 +10,12 @@
     <th:block th:each="msg : ${messages}">
         <h1 th:text="${msg}"></h1>
     </th:block>
+
+    <hr>
+    <br>
+    <form th:method="GET" action="/cars">
+        <input type="submit" value=" to Cars">
+    </form>
 </div>
 </body>
 </html>

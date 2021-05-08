@@ -1,6 +1,9 @@
 package web.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -9,21 +12,26 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
+    @NotEmpty(message = "Имя не может быть пустым")
+    @Size(min = 2, max = 15, message = "Имя не может быть менее 2 символов или более 15")
     private String name;
 
-    @Column
-    private String surname;
+    @Column(name = "lastname")
+    @NotEmpty(message = "Фамилия не может быть пустой")
+    @Size(min = 2, max = 15, message = "Фамилия не может быть менее 2 символов или более 15")
+    private String lastname;
 
-    @Column
+    @Column(name = "email")
+    @Email(message = "Не верный формат Email")
     private String email;
 
     public User() {
     }
 
-    public User(String name, String surname, String email) {
+    public User(String name, String lastname, String email) {
         this.name = name;
-        this.surname = surname;
+        this.lastname = lastname;
         this.email = email;
     }
 
@@ -31,8 +39,8 @@ public class User {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastname() {
+        return lastname;
     }
 
     public String getEmail() {
@@ -43,19 +51,28 @@ public class User {
         this.name = name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User: " +
+                "id= " + id +
+                ", name= " + name +
+                ", lastname= " + lastname +
+                ", email= " + email;
     }
 }

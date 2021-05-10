@@ -27,19 +27,16 @@ public class UserServiceImp implements UserService {
         return dao.getUser(id);
     }
 
-    @Transactional
     @Override
     public void add(User user) {
         dao.add(user);
     }
 
-    @Transactional
     @Override
     public void edit(User user, long id) {
         dao.edit(user, id);
     }
 
-    @Transactional
     @Override
     public void remove(long id) {
         dao.remove(id);

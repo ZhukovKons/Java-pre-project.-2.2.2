@@ -13,7 +13,6 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/users")
 public class UsersController {
 
     private final UserService userService;
@@ -27,7 +26,7 @@ public class UsersController {
     @GetMapping
     public String getAllUsers(Model model, @ModelAttribute("userNew") User userNew) {
         model.addAttribute("userList", userService.getAll());
-        return "/users";
+        return "/index";
     }
 
     @GetMapping("/{id}")
@@ -43,17 +42,17 @@ public class UsersController {
             return "/user";
         }
         userService.edit(user, id);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @PostMapping()
     public String createUser(@ModelAttribute("userNew") @Valid User userNew,
                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return null;
+            return "/index";
         }
         userService.add(userNew);
-        return "redirect:/users";
+        return "redirect:/";
 
     }
 
@@ -62,6 +61,6 @@ public class UsersController {
         System.out.println("delete @DeleteMapping");
         userService.remove(id);
 
-        return "redirect:/users";
+        return "redirect:/";
     }
 }

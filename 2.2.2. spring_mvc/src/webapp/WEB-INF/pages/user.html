@@ -7,7 +7,7 @@
 <body>
 <h3>Редактировать пользователя</h3>
 <br>
-<form th:method="PATCH" th:action="@{/users/{id} (id=${user.getId()})}" th:object="${user}">
+<form th:method="PATCH" th:action="@{/{id} (id=${user.getId()})}" th:object="${user}">
     <table border="0" style="table-layout: fixed; width:max-content">
         <tr>
             <th>
@@ -40,5 +40,10 @@
     <br>
     <input type="submit" style="background-color: aquamarine" value=" Сохранить изменения ">
 </form>
+<form style="position: fixed; bottom: 15px; left: 15px" action="/" target="_blank">
+    <hr>
+    <button formtarget="_self" style="background-color: #e2be40"> На главную </button>
+</form>
+
 </body>
 </html>

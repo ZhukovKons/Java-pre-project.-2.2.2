@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +26,7 @@ public class User {
     @Column(name = "email")
     @Email(message = "Не верный формат Email")
     private String email;
+
 
     public User() {
     }

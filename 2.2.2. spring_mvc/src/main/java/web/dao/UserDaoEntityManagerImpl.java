@@ -13,6 +13,7 @@ public class UserDaoEntityManagerImpl implements UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
+
     @Override
     public List<User> getAll() {
         return entityManager.createQuery("SELECT u FROM User u", User.class)

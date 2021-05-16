@@ -10,6 +10,7 @@ import web.model.User;
 import web.service.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 
 @Controller
@@ -62,5 +63,22 @@ public class UsersController {
         userService.remove(id);
 
         return "redirect:/";
+    }
+
+    @GetMapping(value = "/login")
+    public String getLoginPage() {
+        return "login";
+    }
+
+    @GetMapping(value = "/user")
+    public String getUserPage(Model model, Principal principal) {
+        model.addAttribute("userName", principal.getName());
+        return "user";
+    }
+
+    @GetMapping("/admin")
+    public String dontLoginUser(Model model, Principal principal){
+        model.addAttribute("userName", principal.getName());
+        return "admin";
     }
 }

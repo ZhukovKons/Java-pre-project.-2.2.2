@@ -39,4 +39,6 @@ public class UserDaoEntityManagerImpl implements UserDao {
     public void remove(long id) {
         entityManager.remove(getUser(id));
     }
+
+
 }

@@ -1,49 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>User page</title>
 </head>
 <body>
-<h3>Редактировать пользователя</h3>
-<br>
-<form th:method="PATCH" th:action="@{/{id} (id=${user.getId()})}" th:object="${user}">
-    <table border="0" style="table-layout: fixed; width:max-content">
-        <tr>
-            <th>
-    <label for="name">Имя: </label>
-            </th>
-            <th>
-    <input type="text" th:field="*{name}" id="name">
-    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-            </th>
-        </tr>
-        <tr>
-            <th>
-    <label for="lastname">Фамилия: </label>
-            </th>
-            <th>
-    <input type="text" th:field="*{lastname}" id="lastname">
-    <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">lastname Error</div>
-            </th>
-        </tr>
-        <tr>
-            <th>
-    <label for="email">E-mail: </label>
-        </th>
-        <th>
-    <input type="text" th:field="*{email}" id="email">
-    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
-        </th>
-        </tr>
-    </table>
-    <br>
-    <input type="submit" style="background-color: aquamarine" value=" Сохранить изменения ">
-</form>
-<form style="position: fixed; bottom: 15px; left: 15px" action="/" target="_blank">
-    <hr>
-    <button formtarget="_self" style="background-color: #e2be40"> На главную </button>
-</form>
-
+<h1>USER PAGE</h1>
 </body>
 </html>

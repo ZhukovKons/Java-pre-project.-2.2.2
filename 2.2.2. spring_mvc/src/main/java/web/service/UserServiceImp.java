@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import web.dao.UserDao;
 import web.model.Role;
-import web.model.RolesType;
 import web.model.User;
 import web.model.UserTest;
 
@@ -22,13 +21,13 @@ public class UserServiceImp implements UserService, UserDetailsService {
 
     { //fixme создание пользователей в Мар
         userMap.put("q",
-                new UserTest(1L, "Vladimir", "q", Collections.singleton(new Role(1L, RolesType.ROLE_USER)))); // name - уникальное значение, выступает в качестве ключа Map
+                new UserTest(1L, "Vladimir", "q", Collections.singleton(new Role(1L, "ROLE_USER")))); // name - уникальное значение, выступает в качестве ключа Map
         userMap.put("qq",
                 new UserTest(2L, "Vladimir", "qq" //"$2y$12$/7bSgCvHLYTi3E9L0uzvmeXEI/FPtqHVUahg3VPbzeIwz.pJJkAsG"
-                        , Collections.singleton(new Role(2L, RolesType.ROLE_ADMIN)))); // name - уникальное значение, выступает в качестве ключа Map
+                        , Collections.singleton(new Role(2L, "ROLE_ADMIN")))); // name - уникальное значение, выступает в качестве ключа Map
         Set<Role> roles = new HashSet<Role>();
-        roles.add(new Role(3L, RolesType.ROLE_ADMIN));
-        roles.add(new Role(3L, RolesType.ROLE_USER));
+        roles.add(new Role(3L, "ROLE_ADMIN"));
+        roles.add(new Role(3L, "ROLE_USER"));
         userMap.put("aa",
                 new UserTest(3L, "Alan", "aa", roles)); // name - уникальное значение, выступает в качестве ключа Map
     }

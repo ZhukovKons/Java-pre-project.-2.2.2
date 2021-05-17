@@ -27,6 +27,7 @@ public class User {
     @Email(message = "Не верный формат Email")
     private String email;
 
+    /** Old User Start **/
 
     public User() {
     }
@@ -77,4 +78,6 @@ public class User {
                 ", lastname= " + lastname +
                 ", email= " + email;
     }
+
+    /** Old User END **/
 }

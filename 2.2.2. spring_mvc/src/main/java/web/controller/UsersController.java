@@ -25,7 +25,7 @@ public class UsersController {
 
     @GetMapping()
     public String getUserPage(Model model, Principal principal) {
-        //model.addAttribute("userName", principal.getName());
+        model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
         return "user";
     }
 

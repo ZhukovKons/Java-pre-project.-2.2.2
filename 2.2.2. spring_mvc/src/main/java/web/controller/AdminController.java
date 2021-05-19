@@ -10,6 +10,8 @@ import web.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -24,7 +26,7 @@ public class AdminController {
     }
 
     @GetMapping
-    public String getAllUsers(Model model, @ModelAttribute("userNew") User userNew) {
+    public String getAllUsers(Model model) {
         model.addAttribute("userList", userService.getAll());
         return "/admin";
     }
@@ -49,17 +51,6 @@ public class AdminController {
         }
         userService.edit(user, id);
         return "redirect:/admin";
-    }
-
-    @PostMapping()
-    public String createUser(@ModelAttribute("userNew") @Valid User userNew,
-                             BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return null;
-        }
-        userService.add(userNew);
-        return "redirect:/admin";
-
     }
 
     @DeleteMapping("/{id}")

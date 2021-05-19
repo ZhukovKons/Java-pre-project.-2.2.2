@@ -1,5 +1,6 @@
 package web.dao;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
@@ -38,6 +39,11 @@ public class UserDaoEntityManagerImpl implements UserDao {
     @Override
     public void remove(long id) {
         entityManager.remove(getUser(id));
+    }
+
+    @Override
+    public UserDetails findUserByLogin(String s) {
+        return null;
     }
 
 

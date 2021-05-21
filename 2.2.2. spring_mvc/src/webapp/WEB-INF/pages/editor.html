@@ -22,11 +22,6 @@
         <tr><th><label for="password">Password: </label></th>
             <th><input type="text" th:field="*{password}" id="password">
                 <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div></th></tr>
-            <tr><th><label for="userRole">Роли: </label></th></tr>
-        <tr><a th:each="role : ${user.getRoles()}">
-            <th><input type="text" th:field="*{roles}" id="userRole"></th>
-        </a></tr>
-
         </table>
     <br>
 

@@ -44,6 +44,11 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @Transient
+    private String addRole;
+    @Transient
+    private String deleteRole;
+
     public User() {
     }
 
@@ -70,6 +75,17 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public void replaseRole(){
+        Role newRole = new Role();
+        if(addRole != null){
+            newRole.setRole(addRole);
+            roles.add(newRole);
+        }
+        if (deleteRole != null){
+            roles.remove(deleteRole);
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -80,6 +96,22 @@ public class User implements UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getAddRole() {
+        return addRole;
+    }
+
+    public void setAddRole(String addRole) {
+        this.addRole = addRole;
+    }
+
+    public String getDeleteRole() {
+        return deleteRole;
+    }
+
+    public void setDeleteRole(String deleteRole) {
+        this.deleteRole = deleteRole;
     }
 
     public void setName(String name) {

@@ -31,12 +31,6 @@ public class AdminController {
         return "/admin";
     }
 
-//    @GetMapping("/")
-//    public String dontLoginUser(Model model, Principal principal) {
-//        model.addAttribute("userName", principal.getName());
-//        return "admin";
-//    }
-
     @GetMapping("/{id}")
     public String editUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUser(id));
@@ -49,6 +43,8 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "/editor";
         }
+        user.setRoles(userService.getUser(id).getRoles());
+        user.replaseRole();
         userService.edit(user, id);
         return "redirect:/admin";
     }

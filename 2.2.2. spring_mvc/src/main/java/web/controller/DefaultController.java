@@ -6,10 +6,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import web.model.Role;
 import web.model.User;
 import web.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Collections;
 
 @Controller
 public class DefaultController {
@@ -42,6 +44,7 @@ public class DefaultController {
         if (bindingResult.hasErrors()) {
             return null;
         }
+        userNew.setRoles(Collections.singleton(new Role(2L, "ROLE_USER")));
         userService.add(userNew);
         return "redirect:/";
     }

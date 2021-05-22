@@ -16,6 +16,9 @@
   <label for="email"> E-mail: </label>
   <input type="text" th:field="*{email}" id="email">
   <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+  <label for="password"> Password: </label>
+  <input type="text" th:field="*{password}" id="password">
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
   <input type="submit" value=" Создать ">
 </form>
 </body>

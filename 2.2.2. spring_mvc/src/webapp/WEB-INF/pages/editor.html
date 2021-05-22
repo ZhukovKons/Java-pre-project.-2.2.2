@@ -22,6 +22,17 @@
         <tr><th><label for="password">Password: </label></th>
             <th><input type="text" th:field="*{password}" id="password">
                 <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div></th></tr>
+        <tr><th><p style="line-height: 0.5px" th:each="role : ${user.getRoles()}"
+                   th:text="${role.getRole()}">Role</p></th></tr>
+        <tr>
+            <th><label for="addRole">Добавить роль: </label></th>
+            <th> <input type="text" th:field="*{addRole}" id="addRole"></th>
+      </tr>
+
+        <tr>
+            <th><label for="delRole">Удалить роль: </label></th>
+            <th> <input type="text" th:field="*{deleteRole}" id="delRole"></th>
+        </tr>
         </table>
     <br>
 

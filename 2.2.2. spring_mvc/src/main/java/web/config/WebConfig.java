@@ -16,7 +16,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @ComponentScan("web")
 public class WebConfig implements WebMvcConfigurer {
 

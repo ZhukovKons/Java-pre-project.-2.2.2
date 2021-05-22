@@ -15,8 +15,8 @@ import java.util.*;
 @Service
 public class UserServiceImp implements UserService {
 
-    //@Qualifier("userDaoEntityManagerImpl") //todo - UserDao dao;
-    @Qualifier("arrayDao")
+    @Qualifier("userDaoEntityManagerImpl") //todo - UserDao dao;
+    //@Qualifier("arrayDao")
     @Autowired
     private UserDao dao;
 

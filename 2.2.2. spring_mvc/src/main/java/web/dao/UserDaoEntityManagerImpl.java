@@ -43,7 +43,8 @@ public class UserDaoEntityManagerImpl implements UserDao {
 
     @Override
     public UserDetails findUserByLogin(String s) {
-        return null;
+        return (User) entityManager.createQuery("select u from User u where u.email = :email")
+                .setParameter("email", s).getSingleResult();
     }
 
 

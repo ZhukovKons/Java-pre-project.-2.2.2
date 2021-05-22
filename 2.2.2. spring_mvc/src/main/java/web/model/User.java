@@ -3,32 +3,33 @@ package web.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
-//@Entity
-//@Table(name = "users")
+@Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
-    //    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
-    //    @Column(name = "name")
+    @Column(name = "name")
     @NotEmpty(message = "Имя не может быть пустым")
     @Size(min = 2, max = 15, message = "Имя не может быть менее 2 символов или более 15")
     private String name;
 
-    //    @Column(name = "lastname")
+    @Column(name = "lastname")
     @NotEmpty(message = "Фамилия не может быть пустой")
     @Size(min = 2, max = 15, message = "Фамилия не может быть менее 2 символов или более 15")
     private String lastname;
 
-    //    @Column(name = "email")
+    @Column(name = "email", unique = true)
     @Email(message = "Не верный формат Email")
     private String email;
 
@@ -37,6 +38,10 @@ public class User implements UserDetails {
      **/
     @NotEmpty(message = "Пароль не может быть пустым")
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {
@@ -50,6 +55,14 @@ public class User implements UserDetails {
 
     public User(Long id, String name, String lastname, String email, String password, Set<Role> roles) {
         this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(String name, String lastname, String email, String password, Set<Role> roles) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;

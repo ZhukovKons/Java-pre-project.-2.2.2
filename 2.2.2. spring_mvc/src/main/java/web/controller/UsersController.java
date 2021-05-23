@@ -28,5 +28,4 @@ public class UsersController {
         model.addAttribute("user", userService.loadUserByUsername(principal.getName()));
         return "user";
     }
-
 }

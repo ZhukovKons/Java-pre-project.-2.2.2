@@ -23,6 +23,7 @@ public class DefaultController {
         this.userService = userService;
     }
 
+
     @GetMapping(value = "/login")
     public String getLoginPage() {
         return "login";
@@ -34,7 +35,7 @@ public class DefaultController {
     }
 
     @GetMapping(value = "/new")
-    public String newUser(@ModelAttribute("userNew") User userNew){
+    public String newUser(@ModelAttribute("userNew") User userNew) {
         return "new";
     }
 

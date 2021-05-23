@@ -33,9 +33,6 @@ public class User implements UserDetails {
     @Email(message = "Не верный формат Email")
     private String email;
 
-    /**
-     * Old User Start
-     **/
     @NotEmpty(message = "Пароль не может быть пустым")
     private String password;
 
@@ -74,16 +71,6 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = roles;
     }
-
-    public void print(){
-        System.out.println("===================================");
-        System.out.println("add role:" + addRole);
-        System.out.println("delete role" + deleteRole);
-        System.out.println("===================================");
-        roles.forEach(x -> System.out.println(x.getRole()));
-        System.out.println("===================================");
-    }
-
 
     public String getName() {
         return name;
@@ -167,10 +154,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    /**
-     * Old User END
-     **/
 
     public void setPassword(String password) {
         this.password = password;

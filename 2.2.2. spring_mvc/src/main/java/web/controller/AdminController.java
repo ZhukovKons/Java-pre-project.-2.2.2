@@ -9,10 +9,6 @@ import web.model.User;
 import web.service.UserService;
 
 import javax.validation.Valid;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -24,6 +20,7 @@ public class AdminController {
     public AdminController(UserService userService) {
         this.userService = userService;
     }
+
 
     @GetMapping
     public String getAllUsers(Model model) {

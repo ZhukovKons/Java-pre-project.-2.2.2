@@ -41,7 +41,6 @@ public class UserDaoEntityManagerImpl implements UserDao {
         if (getRoleFoName(user.getDeleteRole()) != null) {
             user.getRoles().remove(getRoleFoName(user.getDeleteRole()));
         }
-        user.print();
         entityManager.merge(user);
     }
 
@@ -56,15 +55,13 @@ public class UserDaoEntityManagerImpl implements UserDao {
                 .setParameter("email", s).getSingleResult();
     }
 
-    private Role getRoleFoName(String nameRole) {
-        return entityManager.createQuery("select r from Role r where r.role = :role").setParameter("role", nameRole).getResultList().isEmpty() ?
-                null : (Role) entityManager.createQuery("select r from Role r where r.role = :role").setParameter("role", nameRole).getSingleResult();
-    }
-
     @Override
     public void addRole(String role) {
         entityManager.persist(new Role(role));
     }
 
-
+    private Role getRoleFoName(String nameRole) {
+        return entityManager.createQuery("select r from Role r where r.role = :role").setParameter("role", nameRole).getResultList().isEmpty() ?
+                null : (Role) entityManager.createQuery("select r from Role r where r.role = :role").setParameter("role", nameRole).getSingleResult();
+    }
 }

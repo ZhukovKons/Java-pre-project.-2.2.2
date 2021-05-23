@@ -3,12 +3,9 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import web.dao.UserDao;
-import web.model.Role;
 import web.model.User;
 
 import java.util.*;
@@ -16,8 +13,7 @@ import java.util.*;
 @Service
 public class UserServiceImp implements UserService {
 
-    @Qualifier("userDaoEntityManagerImpl") //todo - UserDao dao;
-    //@Qualifier("arrayDao")
+    @Qualifier("userDaoEntityManagerImpl")
     @Autowired
     private UserDao dao;
 
@@ -47,7 +43,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException { //todo loadUserByUsername - перенести в бд, а эту хуйню удалить
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return dao.findUserByLogin(s);
     }
 

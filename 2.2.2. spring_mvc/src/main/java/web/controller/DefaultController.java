@@ -46,7 +46,7 @@ public class DefaultController {
         }
         userNew.setRoles(Collections.singleton(new Role(2L, "ROLE_USER")));
         userService.add(userNew);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
 }

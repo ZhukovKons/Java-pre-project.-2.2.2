@@ -2,6 +2,7 @@ package web.dao;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
+import web.model.Role;
 import web.model.User;
 
 import javax.persistence.EntityManager;
@@ -33,6 +34,14 @@ public class UserDaoEntityManagerImpl implements UserDao {
 
     @Override
     public void edit(User user, long id) {
+        user.setRoles(getUser(id).getRoles());
+        if (getRoleFoName(user.getAddRole()) != null) {
+            user.getRoles().add(getRoleFoName(user.getAddRole()));
+        }
+        if (getRoleFoName(user.getDeleteRole()) != null) {
+            user.getRoles().remove(getRoleFoName(user.getDeleteRole()));
+        }
+        user.print();
         entityManager.merge(user);
     }
 
@@ -45,6 +54,16 @@ public class UserDaoEntityManagerImpl implements UserDao {
     public UserDetails findUserByLogin(String s) {
         return (User) entityManager.createQuery("select u from User u where u.email = :email")
                 .setParameter("email", s).getSingleResult();
+    }
+
+    private Role getRoleFoName(String nameRole) {
+        return entityManager.createQuery("select r from Role r where r.role = :role").setParameter("role", nameRole).getResultList().isEmpty() ?
+                null : (Role) entityManager.createQuery("select r from Role r where r.role = :role").setParameter("role", nameRole).getSingleResult();
+    }
+
+    @Override
+    public void addRole(String role) {
+        entityManager.persist(new Role(role));
     }
 
 

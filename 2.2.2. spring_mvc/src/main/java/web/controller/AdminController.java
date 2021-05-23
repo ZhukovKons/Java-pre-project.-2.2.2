@@ -43,8 +43,6 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "/editor";
         }
-        user.setRoles(userService.getUser(id).getRoles());
-        user.replaseRole();
         userService.edit(user, id);
         return "redirect:/admin";
     }

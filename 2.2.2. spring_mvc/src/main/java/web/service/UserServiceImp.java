@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import web.dao.UserDao;
+import web.model.Role;
 import web.model.User;
 
 import java.util.*;
@@ -48,5 +49,11 @@ public class UserServiceImp implements UserService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException { //todo loadUserByUsername - перенести в бд, а эту хуйню удалить
         return dao.findUserByLogin(s);
+    }
+
+    @Override
+    public void addDefaultRoles() {
+        dao.addRole("ROLE_ADMIN");
+        dao.addRole("ROLE_USER");
     }
 }

@@ -75,16 +75,15 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public void replaseRole(){
-        Role newRole = new Role();
-        if(addRole != null){
-            newRole.setRole(addRole);
-            roles.add(newRole);
-        }
-        if (deleteRole != null){
-            roles.remove(deleteRole);
-        }
+    public void print(){
+        System.out.println("===================================");
+        System.out.println("add role:" + addRole);
+        System.out.println("delete role" + deleteRole);
+        System.out.println("===================================");
+        roles.forEach(x -> System.out.println(x.getRole()));
+        System.out.println("===================================");
     }
+
 
     public String getName() {
         return name;

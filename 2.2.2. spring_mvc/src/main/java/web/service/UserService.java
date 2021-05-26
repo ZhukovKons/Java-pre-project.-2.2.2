@@ -13,17 +13,13 @@ public interface UserService extends UserDetailsService {
 
     User getUser(long id);
 
-    @Transactional
     void add(User user);
 
-    @Transactional
     void edit(User user, long id);
 
-    @Transactional
     void remove(long id);
 
     UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
 
-    @Transactional
     void addDefaultRoles();
 }

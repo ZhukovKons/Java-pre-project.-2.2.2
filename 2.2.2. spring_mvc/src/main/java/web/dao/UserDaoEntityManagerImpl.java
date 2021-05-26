@@ -42,6 +42,7 @@ public class UserDaoEntityManagerImpl implements UserDao {
             user.getRoles().remove(getRoleFoName(user.getDeleteRole()));
         }
         entityManager.merge(user);
+        entityManager.flush();
     }
 
     @Override

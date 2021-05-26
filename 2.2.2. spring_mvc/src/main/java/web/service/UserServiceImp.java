@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
 import web.model.User;
 
 import java.util.*;
 
 @Service
+@Transactional
 public class UserServiceImp implements UserService {
 
     @Qualifier("userDaoEntityManagerImpl")
@@ -18,11 +20,13 @@ public class UserServiceImp implements UserService {
     private UserDao dao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getAll() {
         return dao.getAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUser(long id) {
         return dao.getUser(id);
     }
@@ -43,6 +47,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return dao.findUserByLogin(s);
     }
